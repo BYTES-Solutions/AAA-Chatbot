@@ -7,47 +7,14 @@
     <title>My Webpage</title>
     <link rel="stylesheet" href="..\static\style.css">
   </head>
-  
-  <body style="color: rgb(0, 0, 0);" alink="#ee0000" link="#0000ee" vlink="#551a8b">
-    <center>
-    <h1 style="background-color: white;"> AAA ChatBot </h1>
-    </center>
-    
-    <div class="boxed">
-    <div>
-    <div id="chatbox">
-    <p class="botText"> <span>Hi! I'm AAA your personal ChatBot</span></p>
-    </div>
-    <div id="userInput"> <input id="textInput" name="msg" placeholder="Message" type="text"> </div>
-    </div>
-    </div>
-    
-    &nbsp;
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script>
-          function getBotResponse() {
-            var rawText = $("#textInput").val();
-            var userHtml = '<p class="userText"><span>' + rawText + "</span></p>";
-            $("#textInput").val("");
-            $("#chatbox").append(userHtml);
-            document
-              .getElementById("userInput")
-              .scrollIntoView({ block: "start", behavior: "smooth" });
-            $.get("/get", { msg: rawText }).done(function(data) {
-              var botHtml = '<p class="botText"><span>' + data + "</span></p>";
-              $("#chatbox").append(botHtml);
-              document
-                .getElementById("userInput")
-                .scrollIntoView({ block: "start", behavior: "smooth" });
-            });
-          }
-          $("#textInput").keypress(function(e) {
-            if (e.which == 13) {
-              getBotResponse();
-            }
-          });
-        </script>
-    </body>
- 
+
+  <body>
+    <main>
+        <h1>Welcome to my website</h1>
+    </main>
+    <script src="index.js">
+
+    </script>
+  </body>
 
 </html>
