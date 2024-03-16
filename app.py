@@ -13,24 +13,20 @@ def get_response():
     return jsonify({"response": bot_response})
 
 def generate_response(user_message):
-    import openai
-    openai.api_key = "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"
-    model = "text-davinci-003"
-    try:
-        response = openai.Completion.create(
-            engine=model,
-            prompt=user_message,
-            max_tokens=50
-        )
+    import requests
+
+    API_URL = "https://api-inference.huggingface.co/models/google/flan-t5-xxl"
+    headers = {"Authorization": f"Bearer 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"}
+
+    def query(payload):
+        response = requests.post(API_URL, headers=headers, json=payload)
+        return response.json()
         
-        return response.choices[0].text.strip()
-    except Exception as e:
-        print("Error:", e)
-        return "Sorry, I couldn't process your request at the moment."
-    return user_message
-
-
-
+    output = query({
+        "inputs": user_message,
+    })
+    return output[0]['generated_text']
 
 if __name__ == "__main__":
     app.run(debug=True)
+
