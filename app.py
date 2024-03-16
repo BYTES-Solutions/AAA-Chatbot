@@ -14,7 +14,7 @@ def get_response():
 
 def generate_response(user_message):
     import openai
-    openai.api_key = api_key
+    openai.api_key = "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"
     model = "text-davinci-003"
     try:
         response = openai.Completion.create(
